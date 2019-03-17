@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import SendData from './App';
+import SendData from './apply.jsx';
 import * as serviceWorker from './serviceWorker';
 import './styles/bulmaswatch.min.css';
 
