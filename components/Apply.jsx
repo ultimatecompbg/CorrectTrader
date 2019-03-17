@@ -1,6 +1,7 @@
 	import React from "react";
 	import ReactDOM from "react-dom";
 	import '../styles/bulmaswatch.min.css';
+	import '../index.css'
 
 
 	class SendData extends React.Component {
@@ -31,7 +32,7 @@
 		location: this.state.location,
 		description: this.state.description,
 		imagelink: this.state.imagelink,
-		category: this.state.category
+		category: this.state.category,
 		})
 	  })
 	  .then(res => res.json())
@@ -48,10 +49,11 @@
 		} 
 	  render() {
 		return (
-		  <form class="section" id="form" onSubmit={this.handleSubmit}>
+		  <form className="section" id="form" onSubmit={this.handleSubmit}>
 			<label>
 			  <p>Location:</p>
 			  <input
+			  className="input"
 				type="text"
 				value={this.state.locаtion}
 				onChange={this.handleChange}
@@ -59,6 +61,7 @@
 			  />
 			  <p>Company Name:</p>
 			  <input
+			  className="input"
 				type="text"
 				value={this.state.companyname}
 				onChange={this.handleChange}
@@ -66,6 +69,7 @@
 			  />
 			  <p>Description:</p>
 			  <input
+			  className="input"
 				type="text"
 				value={this.state.description}
 				onChange={this.handleChange}
@@ -73,6 +77,7 @@
 			  />
 			  <p>Image Link:</p>
 			  <input
+			  className="input"
 				type="text"
 				value={this.state.imagelink}
 				onChange={this.handleChange}
@@ -101,7 +106,8 @@
 				name="category"
 			  />Finances
 			</label>
-			<input type="submit" value="Submit" />
+			<br />
+			<input type="submit" className="button is-primary" value="Submit" />
 		  </form>
 		);
 

@@ -1,8 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import SendData from './App';
-import * as serviceWorker from './serviceWorker';
-import './styles/bulmaswatch.min.css';
+import SendData from './Apply.jsx';
+import * as serviceWorker from '../serviceWorker';
+import '../styles/bulmaswatch.min.css';
 import RandomCompany from './home.jsx'
 import { Route, Link, BrowserRouter as Router } from 'react-router-dom';
 import Navigation from './navigation.jsx';
@@ -45,10 +45,11 @@ class Register extends React.Component {
 		} 
 	  render() {
 		return (
-		  <form class="section" id="form" onSubmit={this.handleSubmit}>
+		  <form className="section" id="form" onSubmit={this.handleSubmit}>
 			<label>
 			  <p>Username:</p>
 			  <input
+			    className="input"
 				type="text"
 				value={this.state.user}
 				onChange={this.handleChange}
@@ -56,6 +57,7 @@ class Register extends React.Component {
 			  />
 			  <p>Password:</p>
 			  <input
+			  className="input"
 				type="password"
 				value={this.state.password}
 				onChange={this.handleChange}

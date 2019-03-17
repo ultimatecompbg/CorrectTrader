@@ -1,17 +1,22 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import SendData from './apply.jsx';
-import * as serviceWorker from './serviceWorker';
-import './styles/bulmaswatch.min.css';
+import SendData from './Apply.jsx';
+import * as serviceWorker from '../serviceWorker';
+import '../styles/bulmaswatch.min.css';
 import RandomCompany from './home.jsx'
 import { Route, Link, BrowserRouter as Router } from 'react-router-dom';
-import Navigation from './navigation.jsx';
+import Navigation, {AuthContext} from './navigation.jsx';
+import '../index.css'
+
 
 class Login extends React.Component {
+	static contextType = AuthContext;
+
 	  state = {
 		user: "",
 		pass: ""
 	  };
+	  
 
 	  handleChange = event => {
 		const key = event.target.name;
@@ -32,8 +37,11 @@ class Login extends React.Component {
 		})
 	  })
 	  .then(res => res.json())
-	  .then(function (data) {
-		console.log('Request succeeded with JSON response', data);
+	  .then( (data) => {
+		if(data === true)  {
+			console.log(this.context);
+			this.props.toggleAuth(true);
+		}	
 	  })
 	  .catch(function (error) {
 		console.log('Request failed', error);
@@ -42,11 +50,9 @@ class Login extends React.Component {
 	   componentDidMount() {
 			fetch('http://localhost:80/correctsaler/src/backend/login.php')
 	  .then(res => res.json())
-	  .then((status) => {
-		console.log('Request succeeded with JSON response', status);
-		if(status == true){
-			alert("Login OK");
-		}
+	  .then((row) => {
+		console.log('Request succeeded with JSON response', row);
+
 	  })
 	  .catch(function (error) {
 		console.log('Request failed', error);
@@ -55,10 +61,11 @@ class Login extends React.Component {
 		} 
 	  render() {
 		return (
-		  <form class="section" id="form" onSubmit={this.handleSubmit}>
+		  <form className="section" id="form" onSubmit={this.handleSubmit}>
 			<label>
 			  <p>Username:</p>
 			  <input
+			  className="input"
 				type="text"
 				value={this.state.user}
 				onChange={this.handleChange}
@@ -66,6 +73,7 @@ class Login extends React.Component {
 			  />
 			  <p>Password:</p>
 			  <input
+			  className="input"
 				type="password"
 				value={this.state.password}
 				onChange={this.handleChange}

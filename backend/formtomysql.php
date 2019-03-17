@@ -23,8 +23,10 @@ $test = [
 	'category' => $category
 ];
 if($data == null){}else{
+
 $transfer = "INSERT INTO Companies (Location, CompanyName, Description, ImageLink, Category)
 VALUES ('$location', '$companyname', '$description', '$imagelink', '$category')";
-mysqli_query($conn,$transfer);
-}
+	mysqli_query($conn,$transfer); }
+	
+
 ?>

@@ -16,9 +16,21 @@ $test = [
     'username' => $password,
     'password' => $password,
 ];
-if($data == null){}else{
-$transfer = "INSERT INTO Users (User, Password)
-VALUES ('$user', '$password')";
-mysqli_query($conn,$transfer);
+if ($data != null) {
+    $query = sprintf("SELECT * FROM `users` WHERE `username` = '%s'", $username);
+    if ($result = mysqli_query($conn, $query)) {
+        if(mysqli_num_rows($result) > 0){
+            $row = mysqli_fetch_assoc($result);
+            if ($password === $row['password']) {
+                print "Паролата е валидна";
+            }else{
+                print "Невалидна парола";
+            }
+        }else{
+            print "Невалиден потребител";
+        }
+    }else{
+        print "Грешка при свързване с базта данни";
+    }
 }
 ?>

@@ -5,11 +5,10 @@ header('Content-type:application/json;charset=utf-8');
 $host = 'localhost';
 $user = 'root';
 $pass = '';
-$db = 'users';
+$db = 'correcttrader';
 $conn = mysqli_connect($host, $user, $pass, $db);
-$values = json_encode($test);
 $data = json_decode(file_get_contents('php://input'), true); 
-$user =($data["user"]);
+$username =($data["user"]);
 $password = ($data["password"]);
 
 $test = [
@@ -17,6 +16,7 @@ $test = [
     'password' => $password
 
 ];
+$values = json_encode($test);
 $status = null;
 if ($data != null) {
     $query = sprintf("SELECT * FROM `users` WHERE `user` = '%s'", $username);
@@ -25,14 +25,20 @@ if ($data != null) {
             $row = mysqli_fetch_assoc($result);
             if ($password === $row['password']) {
                 $status = true;
+				echo json_encode($status);
             }else{
                 $status = false;
+				echo json_encode($status);
             }
         }else{
             $status = null;
+			echo json_encode($status);
         }
     }else{
 		$status = null;
+		echo json_encode($status);
+		
     }
+
 }
 ?>

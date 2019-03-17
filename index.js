@@ -1,11 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import SendData from './App';
+import SendData from './components/Apply.jsx';
 import * as serviceWorker from './serviceWorker';
 import './styles/bulmaswatch.min.css';
-import RandomCompany from './home.jsx'
+import './index.css'
+import RandomCompany from './components/home.jsx'
 import { Route, Link, BrowserRouter as Router } from 'react-router-dom';
-import Navigation from './navigation.jsx';
+import Navigation from './components/navigation.jsx';
 
 
 /*function Apply() {

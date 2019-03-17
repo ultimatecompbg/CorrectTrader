@@ -8,7 +8,7 @@ $pass = '';
 $db = 'correcttrader';
 $conn = mysqli_connect($host, $user, $pass, $db);
 
- $result = mysqli_query($conn,"SELECT * FROM Companies ORDER BY RAND() LIMIT 1");
+ $result = mysqli_query($conn,"SELECT * FROM Companies");
 
   $rows = array();
   while($r = mysqli_fetch_array($result)) {
