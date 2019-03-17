@@ -1,6 +1,6 @@
 	import React from "react";
 	import ReactDOM from "react-dom";
-	import './styles/bulmaswatch.min.css';
+	import '../styles/bulmaswatch.min.css';
 
 
 	class SendData extends React.Component {
