@@ -19,15 +19,15 @@ class SpecificCompany extends React.Component {
 	  .then(res => res.json())
 	  .then((companyinfo) => {
 		console.log('Request succeeded with JSON response', companyinfo);
-		companyinfo.forEach(function(element) {
-			if(element.companyname == "Bio Store"){
-				if(element.category == "Groceries"){
+		companyinfo.forEach(element => {
+			if(element.CompanyName == "Bio Store"){
+				if(element.Category == "Groceries"){
 					this.setState ({
-			         location: companyinfo[0].Location,
-			         companyname: companyinfo[0].CompanyName,
-			         description: companyinfo[0].Description,
-			         imagelink: companyinfo[0].ImageIink,
-			         category: companyinfo[0].Category
+			         location: element.Location,
+			         companyname: element.CompanyName,
+			         description: element.Description,
+			         imagelink: element.ImageLink,
+			         category: element.Category
 		            });
 				}
 			}
@@ -45,7 +45,7 @@ class SpecificCompany extends React.Component {
 		 Company Name: {this.state.companyname} <br></br>
 		 Category: {this.state.category} <br></br>
 		 Description: {this.state.description} <br></br>
-		 Image: <img src={this.state.imagelink}></img> <br></br>
+		 Image: <br></br><img src={this.state.imagelink} width="350" height="300"></img> <br></br>
 		 </div>
 		)
 	}
