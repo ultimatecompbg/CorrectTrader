@@ -1,36 +1,24 @@
 <?php
-header("Access-Control-Allow-Origin: http://localhost:3000");  
+header("Access-Control-Allow-Origin: http://localhost:3000");
 header('Content-type:application/json;charset=utf-8');
-
 $host = 'localhost';
 $user = 'root';
 $pass = '';
 $db = 'correcttrader';
 $conn = mysqli_connect($host, $user, $pass, $db);
 $values = json_encode($test);
-$data = json_decode(file_get_contents('php://input'), true); 
-$user =($data["user"]);
+$data = json_decode(file_get_contents('php://input'), true);
+$user = ($data["user"]);
 $password = ($data["password"]);
-
+$avatar = ($data["avatar"]);
 $test = [
-    'username' => $password,
+    'username' => $user,
     'password' => $password,
+    'avatar' => $avatar
 ];
-if ($data != null) {
-    $query = sprintf("SELECT * FROM `users` WHERE `username` = '%s'", $username);
-    if ($result = mysqli_query($conn, $query)) {
-        if(mysqli_num_rows($result) > 0){
-            $row = mysqli_fetch_assoc($result);
-            if ($password === $row['password']) {
-                print "Паролата е валидна";
-            }else{
-                print "Невалидна парола";
-            }
-        }else{
-            print "Невалиден потребител";
-        }
-    }else{
-        print "Грешка при свързване с базта данни";
-    }
+if ($data == null) { } else {
+    $transfer = "INSERT INTO users (user, password, avatar)
+VALUES ('$user', '$password', '$avatar')";
+    mysqli_query($conn, $transfer);
 }
-?>
+ 

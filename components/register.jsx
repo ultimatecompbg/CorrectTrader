@@ -6,6 +6,7 @@ class Register extends React.Component {
   state = {
     user: "",
     pass: "",
+    avatar: "",
     repeatPass: ""
   };
 
@@ -28,7 +29,8 @@ class Register extends React.Component {
       method: "post",
       body: JSON.stringify({
         user: this.state.user,
-        password: this.state.pass
+        password: this.state.pass,
+        avatar: this.state.avatar
       })
     })
       .then(res => res.json())
@@ -69,6 +71,14 @@ class Register extends React.Component {
                 value={this.state.password}
                 onChange={this.handleChange}
                 name="repeatPass"
+              />
+              <p>Avatar:</p>
+              <input
+                className="input"
+                type="text"
+                value={this.state.avatar}
+                onChange={this.handleChange}
+                name="avatar"
               />
             </label>
             <br />

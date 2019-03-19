@@ -31,6 +31,7 @@ class Login extends React.Component {
       .then(data => {
         if (data !== "") {
           this.props.toggleAuth(data);
+          this.props.toggleUser(this.state.user);
           this.props.history.replace("/");
         } else {
           Swal.fire("Wrong credentials! Please try again!");
