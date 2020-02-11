@@ -1,13 +1,11 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import SendData from './components/Apply.jsx';
-import * as serviceWorker from './serviceWorker';
-import './styles/bulmaswatch.min.css';
-import './index.css'
-import RandomCompany from './components/home.jsx'
-import { Route, Link, BrowserRouter as Router } from 'react-router-dom';
-import Navigation from './components/navigation.jsx';
-
+import React from "react";
+import ReactDOM from "react-dom";
+import SendData from "./components/companies/Apply.jsx";
+import * as serviceWorker from "./serviceWorker";
+import "./styles/bulmaswatch.min.css";
+import "./styles/index.css";
+import { Route, Link, BrowserRouter as Router } from "react-router-dom";
+import Navigation from "./components/navigation/navigation.jsx";
 
 /*function Apply() {
   return (
@@ -20,4 +18,4 @@ import Navigation from './components/navigation.jsx';
 */
 
 const rootElement = document.getElementById("root");
-ReactDOM.render(<Navigation/>, rootElement);
+ReactDOM.render(<Navigation />, rootElement);

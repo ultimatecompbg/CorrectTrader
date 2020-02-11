@@ -16,9 +16,13 @@ $test = [
     'password' => $password,
     'avatar' => $avatar
 ];
-if ($data == null) { } else {
+$check = "SELECT * FROM `users` WHERE `user` = '$user'";
+$usernamecheck = mysqli_query($conn, $check);
+
+if ($data == null || mysqli_num_rows($usernamecheck) >= 1) {
+} else {
     $transfer = "INSERT INTO users (user, password, avatar)
 VALUES ('$user', '$password', '$avatar')";
     mysqli_query($conn, $transfer);
 }
- 
+echo json_encode(mysqli_num_rows($usernamecheck));

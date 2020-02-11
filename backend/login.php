@@ -10,7 +10,6 @@ $conn = mysqli_connect($host, $user, $pass, $db);
 $data = json_decode(file_get_contents('php://input'), true);
 $username = ($data["user"]);
 $password = ($data["password"]);
-
 $status = "";
 if ($data != "") {
     $query = sprintf("SELECT * FROM `users` WHERE `user` = '%s'", $username);
@@ -19,7 +18,7 @@ if ($data != "") {
             $row = mysqli_fetch_assoc($result);
             if ($password === $row['password']) {
                 $status = "User";
-                if ($password === "begemaster") {
+                if ($row['role'] == "admin") {
                     $status = "Admin";
                 }
             }
@@ -28,3 +27,4 @@ if ($data != "") {
 }
 
 echo json_encode($status);
+//echo json_encode($row['avatar']);
